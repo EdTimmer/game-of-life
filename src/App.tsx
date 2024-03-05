@@ -6,7 +6,7 @@ function App() {
   const board = useStore(state => state.board)
   const aliveCells = useStore(state => state.aliveCells)
 
-  console.log('aliveCells :>> ', aliveCells);
+  // console.log('aliveCells :>> ', aliveCells);
   return (
     <AppContainer>
       <Board board={board} />
