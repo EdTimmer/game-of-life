@@ -3,4 +3,11 @@ export interface CellType {
   adjacentAliveCount: number;
 }
 
-export type BoardType = CellType[][];
+export interface AliveCellType {
+  rowIndex: number,
+  columnIndex: number,
+}
+
+export type AliveCellsArrayType = AliveCellType[] | [] 
+
+export type BoardType = CellType[][]

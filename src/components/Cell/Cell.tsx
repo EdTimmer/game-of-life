@@ -5,7 +5,6 @@ interface CellProps {
   rowIndex: number,
   columnIndex: number,
   isAlive: boolean,
-  adjacentAliveCount: number,
 }
 
 function Cell({ rowIndex, columnIndex, isAlive }: CellProps) {

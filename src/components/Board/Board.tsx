@@ -7,16 +7,14 @@ interface Props {
 }
 
 function Board({ board }: Props) {
-  console.log('board :>> ', board);
   return (
     <BoardContainer className='board'>
       {board.map((row, rowIndex) => (
         <RowContainer className='row' key={`${rowIndex}`}>
-          {row.map(({ isAlive, adjacentAliveCount }, colIndex) => (
+          {row.map(({ isAlive }, colIndex) => (
             <Cell
               key={`${rowIndex}-${colIndex}`}
               isAlive={isAlive}
-              adjacentAliveCount={adjacentAliveCount}
               rowIndex={rowIndex}
               columnIndex={colIndex}
             />

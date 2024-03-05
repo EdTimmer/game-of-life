@@ -4,7 +4,9 @@ import { useStore } from './store';
 
 function App() {
   const board = useStore(state => state.board)
-  console.log('board :>> ', board);
+  const aliveCells = useStore(state => state.aliveCells)
+
+  console.log('aliveCells :>> ', aliveCells);
   return (
     <AppContainer>
       <Board board={board} />
