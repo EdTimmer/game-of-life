@@ -6,8 +6,9 @@ import { getAdjacentStatus } from './utils/getAdjacentStatus';
 
 function App() {
   const board = useStore(state => state.board)
-  const aliveCells = useStore(state => state.aliveCells)
+  // const aliveCells = useStore(state => state.aliveCells)
   const runOneCycle = useStore(state => state.runOneCycle)
+  const reset = useStore(state => state.reset)
   // getAdjacentStatus(1, 1, board)
   // console.log('aliveCells :>> ', aliveCells);
   console.log('app rendered')
@@ -15,6 +16,7 @@ function App() {
     <AppContainer>
       <Board board={board} />
       <button onClick={() => runOneCycle()}>Evaluate</button>
+      <button onClick={() => reset()}>Reset</button>
     </AppContainer>
   );
 }
