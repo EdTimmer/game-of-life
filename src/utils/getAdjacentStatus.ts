@@ -16,7 +16,7 @@ export const getAdjacentStatus = (rowIndex: number, columnIndex: number, board: 
   const adjacentCells = [topLeft, topCenter, topRight, centerLeft, centerRight, bottomLeft, bottomCenter, bottomRight]
 
   const filteredAdjacentCells = adjacentCells.filter(cell => {
-    return cell.rowIndex > -1 && cell.rowIndex < 20 && cell.columnIndex > -1 && cell.columnIndex < 20
+    return cell.rowIndex > -1 && cell.rowIndex < 40 && cell.columnIndex > -1 && cell.columnIndex < 40
   })
 
   filteredAdjacentCells.forEach(cell => {
@@ -24,6 +24,5 @@ export const getAdjacentStatus = (rowIndex: number, columnIndex: number, board: 
       adjacentAliveCount++
     }
   })
-  // console.log('adjacentAliveCount :>> ', adjacentAliveCount);
   return adjacentAliveCount
 }

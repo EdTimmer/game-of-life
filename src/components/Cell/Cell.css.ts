@@ -5,7 +5,7 @@ interface CellContainerProps {
 }
 
 export const CellContainer = styled.div<CellContainerProps>`
-  width: 4rem;
+  width: 2rem;
   aspect-ratio: 1;
   border: 1px solid black;
   background-color: ${({ $isAlive }) => ($isAlive ? 'black' : 'white')};
