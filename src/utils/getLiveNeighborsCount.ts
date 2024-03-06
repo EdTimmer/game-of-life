@@ -1,8 +1,8 @@
 import { BoardType } from "../types"
 
-export const getAdjacentStatus = (rowIndex: number, columnIndex: number, board: BoardType) => {
+export const getLiveNeighborsCount = (rowIndex: number, columnIndex: number, board: BoardType) => {
 
-  let adjacentAliveCount = 0
+  let liveNeighborsCount = 0
 
   const topLeft = { rowIndex: rowIndex - 1, columnIndex: columnIndex - 1 }
   const topCenter = { rowIndex: rowIndex - 1, columnIndex: columnIndex }
@@ -13,16 +13,17 @@ export const getAdjacentStatus = (rowIndex: number, columnIndex: number, board: 
   const bottomCenter = { rowIndex: rowIndex + 1, columnIndex: columnIndex }
   const bottomRight = { rowIndex: rowIndex + 1, columnIndex: columnIndex + 1 }
 
-  const adjacentCells = [topLeft, topCenter, topRight, centerLeft, centerRight, bottomLeft, bottomCenter, bottomRight]
+  const neighborCells = [topLeft, topCenter, topRight, centerLeft, centerRight, bottomLeft, bottomCenter, bottomRight]
 
-  const filteredAdjacentCells = adjacentCells.filter(cell => {
+  const filteredNeighborCells = neighborCells.filter(cell => {
     return cell.rowIndex > -1 && cell.rowIndex < 40 && cell.columnIndex > -1 && cell.columnIndex < 40
   })
 
-  filteredAdjacentCells.forEach(cell => {
+  filteredNeighborCells.forEach(cell => {
     if (board[cell.rowIndex][cell.columnIndex].isAlive) {
-      adjacentAliveCount++
+      liveNeighborsCount++
     }
   })
-  return adjacentAliveCount
+
+  return liveNeighborsCount
 }
