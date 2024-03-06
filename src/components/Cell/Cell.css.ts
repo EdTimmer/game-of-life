@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 interface CellContainerProps {
 	$isAlive: boolean,
 }
 
 export const CellContainer = styled.div<CellContainerProps>`
-  width: 2rem;
+  width: 3rem;
   aspect-ratio: 1;
-  border: 1px solid black;
-  background-color: ${({ $isAlive }) => ($isAlive ? 'black' : 'white')};
+  border: 1px solid ${colors.airSuperiorityBlue};
+  background-color: ${({ $isAlive }) => ($isAlive ? `${colors.prussianBlue}` : `${colors.papayaWhip}`)};
 `;
