@@ -1,8 +1,8 @@
 import { StyledButton } from "./Button.css";
 
-interface ButtonProps {
-  onClick: () => void;
+export interface ButtonProps {
   children: React.ReactNode;
+  onClick: () => void;
 }
 
 const Button = ({ onClick, children}: ButtonProps) => {

@@ -4,7 +4,9 @@ import { makeEmptyBoard } from './utils/makeEmptyBoard';
 
 interface GameState {
   board: BoardType,
+  cycleCount: number,
   toggleAlive: (rowIndex: number, columnIndex: number) => void,
+  incrementCycleCount: () => void,
   reset: () => void,
 }
 
@@ -21,6 +23,8 @@ const handleReset = () => {
 
 export const useStore = create<GameState>((set) => ({
   board: makeEmptyBoard(),
+  cycleCount: 0,
   toggleAlive: (rowIndex: number, columnIndex: number) => set(state => ({ board: handleToggleAlive(rowIndex, columnIndex, state.board) })),
-  reset: () => set({ board: handleReset() }),
+  incrementCycleCount: () => set(state => ({ cycleCount: state.cycleCount + 1})),
+  reset: () => set({ board: handleReset(), cycleCount: 0 }),
 }))

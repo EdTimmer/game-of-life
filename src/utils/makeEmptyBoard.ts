@@ -6,9 +6,9 @@ const defaultCell: CellType = {
 };
 
 export const makeEmptyBoard = () => {
-  const newBoard = Array(30)
+  const newBoard = Array(42)
     .fill(null)
-    .map(() => Array(30).fill(null)
+    .map(() => Array(42).fill(null)
       .map(() => ({ ...defaultCell })))
   return newBoard
 }

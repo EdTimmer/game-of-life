@@ -28,19 +28,3 @@ export const Title = styled.p`
   letter-spacing: 4px;
   text-transform: uppercase;
 `;
-
-export const IntroductionContainer = styled.div`
-  width: 100%;
-  padding: 1.2rem 2.4rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const IntroductionText = styled.p`
-  padding: 0;
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: normal;
-`;

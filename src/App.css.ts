@@ -6,7 +6,6 @@ export const AppContainer = styled.div`
   font-family: 'Roboto', sans-serif;
   width: 100vw;
   min-height: 100vh;
-  margin: 2rem;
   display: flex;
   flex-direction: column;
 `;
@@ -15,24 +14,24 @@ export const CenterSection = styled.div`
   width: 100%;
   flex: 1;
   margin-top: 2.4rem;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 `;
 
 export const CenterLeft = styled.div`
-  flex: 2;
-  height: 100%;
+  grid-column: 1/2;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
 export const CenterRight = styled.div`
-  flex: 1;
+  grid-column: 2/3;
+  height: 94rem;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 `

@@ -16,7 +16,7 @@ export const getLiveNeighborsCount = (rowIndex: number, columnIndex: number, boa
   const neighborCells = [topLeft, topCenter, topRight, centerLeft, centerRight, bottomLeft, bottomCenter, bottomRight]
 
   const filteredNeighborCells = neighborCells.filter(cell => {
-    return cell.rowIndex > -1 && cell.rowIndex < 30 && cell.columnIndex > -1 && cell.columnIndex < 30
+    return cell.rowIndex > -1 && cell.rowIndex < 42 && cell.columnIndex > -1 && cell.columnIndex < 42
   })
 
   filteredNeighborCells.forEach(cell => {
