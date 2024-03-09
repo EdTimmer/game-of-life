@@ -1,8 +1,8 @@
-import { AppContainer, CenterLeft, CenterRight, CenterSection } from './App.css';
+import { AppContainer, CenterSection } from './App.css';
 import Board from './components/Board/Board';
 import Header from './components/Header/Header';
-import Explanation from './components/Explanation/Explanation';
 import { useStore } from './store';
+import Controls from './components/Controls/Controls';
 
 function App() {
   const board = useStore(state => state.board)
@@ -11,17 +11,9 @@ function App() {
     <AppContainer>
       <Header />
       <CenterSection>
-        <CenterLeft>
-          <Board board={board} />
-        </CenterLeft>
-
-        <CenterRight>
-          <Explanation />
-        </CenterRight>
+        <Board board={board} />
+        <Controls />
       </CenterSection>
-
-
-
     </AppContainer>
   );
 }

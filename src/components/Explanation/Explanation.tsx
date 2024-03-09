@@ -1,41 +1,10 @@
-import { useRef } from 'react';
-import Button from '../Button/Button';
 import {
-  ButtonsSection,
   ExplanationContainer,
   ExplanationHeader,
   ExplanationSecion,
-  ExplanationText,
-  RunContainer,
 } from './Explanation.css';
-import { useStore } from '../../store';
-import { runCycle } from '../../utils/runCycle';
-import { runPlay } from '../../utils/runPlay';
-import ResetButton from '../ResetButton/ResetButton';
 
 const Explanation = () => {
-  const board = useStore(state => state.board)
-  const cycleCount = useStore(state => state.cycleCount)
-  const incrementCycleCount = useStore(state => state.incrementCycleCount)
-  const reset = useStore(state => state.reset)
-  const toggleAlive = useStore(state => state.toggleAlive)
-
-  const shouldStopRef = useRef<boolean>(false);
-
-  const startRecursivePlay = () => {
-    shouldStopRef.current = false; // ref is set to false when starting
-    runPlay(shouldStopRef, 250, board, toggleAlive, incrementCycleCount);
-  };
-
-  const stopExecution = () => {
-    shouldStopRef.current = true
-  };
-
-  const handleReset = () => {
-    stopExecution()
-    reset()
-  }
-
   return (
     <ExplanationContainer>
       <div>
@@ -60,16 +29,6 @@ const Explanation = () => {
           <p>D. Click the Reset button to reset the board.</p>
         </ExplanationSecion>
       </div>
-
-      <ButtonsSection>
-        <RunContainer>
-          <Button onClick={() => { runCycle(board, toggleAlive, incrementCycleCount) }}>RUN</Button>
-          <ExplanationText>cycle count: {cycleCount}</ExplanationText>
-        </RunContainer>
-        <ResetButton onClick={handleReset}>Reset</ResetButton>
-        <button onClick={startRecursivePlay}>play</button>
-        <button onClick={stopExecution}>stop</button>
-      </ButtonsSection>
     </ExplanationContainer>
   );
 };

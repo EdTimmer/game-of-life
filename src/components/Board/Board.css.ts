@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 
 export const ViewportContainer = styled.div`
-  width: 90rem;
-  height: 90rem;
+  width: auto;
+  height: 100rem;
   overflow: hidden;
+  /* border: 4px solid ${colors.barnRed}; */
+  /* border: 4px solid ${colors.platinum}; */
+  margin: 0 1.4rem 1.4rem 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4px solid ${colors.barnRed};
+  
 `;
 
 export const BoardContainer = styled.div`
@@ -20,3 +23,4 @@ export const BoardContainer = styled.div`
 export const RowContainer = styled.div`
   display: flex;
 `;
+

@@ -9,7 +9,8 @@ export const HeaderContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  background: ${colors.barnRed};
+  /* background: ${colors.barnRed}; */
+  background: ${colors.black};
   width: 100%;
   padding: 10px;
   display: flex;
@@ -19,7 +20,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.p`
-  color: ${colors.lightBeige01};
+  color: ${colors.orangeWeb};
   padding: 0;
   margin: 0;
   font-size: 2rem;

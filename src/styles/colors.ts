@@ -18,7 +18,6 @@ const colors = {
   grey02: '#2e2e2e',
   darkGrey50: '#4D4D4D',
   darkGrey60: '#2E2E2E',
-  white: '#ffffff',
 
   // fall 2
   darkMossGreen: '#606c38ff',
@@ -40,6 +39,13 @@ const colors = {
   papayaWhip: '#fdf0d5ff',
   prussianBlue: '#003049ff',
   airSuperiorityBlue: '#669bbcff',
+
+  // winter
+  black: ' #000000ff',
+  oxfordBlue: '#14213dff',
+  orangeWeb: '#fca311ff',
+  platinum: '#e5e5e5ff',
+  white: '#ffffffff',
 
 
 };
