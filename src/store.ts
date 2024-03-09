@@ -8,6 +8,8 @@ interface GameState {
   toggleAlive: (rowIndex: number, columnIndex: number) => void,
   incrementCycleCount: () => void,
   reset: () => void,
+  // shouldStop: boolean,
+  // toggleShouldStop: () => void,
 }
 
 const handleToggleAlive = (rowIndex: number, columnIndex: number, board: BoardType) => {
@@ -27,4 +29,6 @@ export const useStore = create<GameState>((set) => ({
   toggleAlive: (rowIndex: number, columnIndex: number) => set(state => ({ board: handleToggleAlive(rowIndex, columnIndex, state.board) })),
   incrementCycleCount: () => set(state => ({ cycleCount: state.cycleCount + 1})),
   reset: () => set({ board: handleReset(), cycleCount: 0 }),
+  // shouldStop: false,
+  // toggleShouldStop: () => set(state => ({ shouldStop: !state.shouldStop})),
 }))

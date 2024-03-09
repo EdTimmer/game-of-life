@@ -1,7 +1,7 @@
 import { BoardType, CellCoordinatesArrayType } from "../types"
 import { getLiveNeighborsCount } from "./getLiveNeighborsCount"
 
-export const runCycle = (board: BoardType, toggleAlive: (rowIndex: number, columnIndex: number) => void) => {
+export const runCycle = (board: BoardType, toggleAlive: (rowIndex: number, columnIndex: number) => void, incrementCycleCount: () => void) => {
   let arrayOfChangedCells: CellCoordinatesArrayType = []
   board.forEach((row, rowIndex) => {
     row.forEach((cell, columnIndex) => {
@@ -21,4 +21,5 @@ export const runCycle = (board: BoardType, toggleAlive: (rowIndex: number, colum
   arrayOfChangedCells.forEach(cell => {
     toggleAlive(cell.rowIndex, cell.columnIndex)
   })
+  incrementCycleCount()
 }

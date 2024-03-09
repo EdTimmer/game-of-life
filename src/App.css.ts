@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import colors from './styles/colors';
 
 export const AppContainer = styled.div`
-  background: ${colors.lightBeige01};
+  background: #403d39;
   font-family: 'Roboto', sans-serif;
   width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  color: white;
 `;
 
 export const CenterSection = styled.div`
@@ -22,7 +23,7 @@ export const CenterLeft = styled.div`
   grid-column: 1/2;
   height: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `
 

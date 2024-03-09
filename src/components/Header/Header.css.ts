@@ -3,14 +3,13 @@ import colors from '../../styles/colors';
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  border-bottom: 2px solid ${colors.prussianBlue};
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 export const TitleContainer = styled.div`
-  background: ${colors.prussianBlue};
+  background: ${colors.barnRed};
   width: 100%;
   padding: 10px;
   display: flex;

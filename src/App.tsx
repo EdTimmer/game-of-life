@@ -14,7 +14,7 @@ function App() {
         <CenterLeft>
           <Board board={board} />
         </CenterLeft>
-        
+
         <CenterRight>
           <Explanation />
         </CenterRight>
