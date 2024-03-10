@@ -1,6 +1,5 @@
 export interface CellType {
   isAlive: boolean;
-  // aliveNeighborsCount: number;
 }
 
 export type BoardType = CellType[][];

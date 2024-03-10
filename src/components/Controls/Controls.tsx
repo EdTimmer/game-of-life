@@ -11,7 +11,7 @@ import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
-import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
+import ClearIcon from '@mui/icons-material/Clear';
 import NumbersIcon from '@mui/icons-material/Numbers';
 import FastRewindIcon from '@mui/icons-material/FastRewind';
 
@@ -80,7 +80,7 @@ const Controls = () => {
             color="secondary"
             aria-label="Basic button group"
           >
-            <Button size="large" aria-label="rewind" onClick={handleReturnToStart} disabled={cycleCount === 0}>
+            <Button variant="contained" size="large" aria-label="rewind" onClick={handleReturnToStart} disabled={cycleCount === 0}>
               <FastRewindIcon />
             </Button>
 
@@ -105,7 +105,7 @@ const Controls = () => {
             </Button>
 
             <Button size="large" aria-label="restart" onClick={handleReset}>
-              <SettingsBackupRestoreIcon />
+              <ClearIcon />
             </Button>
           </ButtonGroup>
         </RowSection>

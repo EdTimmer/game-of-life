@@ -2,7 +2,6 @@ import { CellType } from '../types';
 
 const defaultCell: CellType = {
   isAlive: false,
-  // aliveNeighborsCount: 0,
 };
 
 export const makeEmptyBoard = () => {

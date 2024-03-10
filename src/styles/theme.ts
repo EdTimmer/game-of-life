@@ -9,5 +9,9 @@ export const theme = createTheme({
     secondary: {
       main: `${colors.orangeWeb}`,
     },
+    action: {
+      disabledBackground: `${colors.platinum}`,
+      disabled: `${colors.teal}`
+    }
   },
 });
