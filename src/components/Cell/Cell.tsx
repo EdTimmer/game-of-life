@@ -9,8 +9,10 @@ interface CellProps {
 
 function Cell({ rowIndex, columnIndex, isAlive }: CellProps) {
   const toggleCell = useStore(state => state.toggleAlive);
+  const zoomLevel = useStore(state => state.zoomLevel);
   return (
     <CellContainer
+      zoomLevel={zoomLevel}
       $isAlive={isAlive}
       onClick={() => toggleCell(rowIndex, columnIndex)}
     />

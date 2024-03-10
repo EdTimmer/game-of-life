@@ -14,4 +14,19 @@ export const theme = createTheme({
       disabled: `${colors.teal}`
     }
   },
+  components: {
+    MuiSlider: {
+      styleOverrides: {
+        thumb: {
+          color: `${colors.orangeWeb}`,
+        },
+        track: {
+          color: `${colors.orangeWeb}`,
+        },
+        rail: {
+          color: `${colors.platinum}`,
+        },
+      },
+    },
+  },
 });
