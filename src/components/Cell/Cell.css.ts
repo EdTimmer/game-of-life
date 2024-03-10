@@ -3,11 +3,11 @@ import colors from '../../styles/colors';
 
 interface CellContainerProps {
   $isAlive: boolean;
-  zoomLevel: number;
+  $zoomLevel: number;
 }
 
 export const CellContainer = styled.div<CellContainerProps>`
-  width: ${({ zoomLevel }) => `${zoomLevel}px`};
+  width: ${({ $zoomLevel }) => `${$zoomLevel}px`};
   aspect-ratio: 1;
   border: 1px solid ${colors.black};
   background-color: ${({ $isAlive }) =>

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { ControlsContainer, ControlsText, RowSection } from './Controls.css';
+import { ControlsContainer, ControlsText, RowSection, SliderContainer } from './Controls.css';
 import { useStore } from '../../store';
 import { runCycle } from '../../utils/runCycle';
 import { runPlay } from '../../utils/runPlay';
@@ -93,44 +93,45 @@ const Controls = () => {
 
   return (
     <ControlsContainer>
-        <RowSection>
-          <ButtonGroup
-            variant="contained"
+      <RowSection>
+        <ButtonGroup
+          variant="contained"
+          size="large"
+          color="secondary"
+          aria-label="Basic button group"
+        >
+          <Button variant="contained" size="large" aria-label="rewind" onClick={handleReturnToStart} disabled={cycleCount === 0}>
+            <FastRewindIcon fontSize="large" />
+          </Button>
+
+          <Button size="large" aria-label="back" onClick={handleStepBack} disabled={cycleCount === 0}>
+            <UndoIcon fontSize="large" />
+          </Button>
+
+          <Button
             size="large"
-            color="secondary"
-            aria-label="Basic button group"
+            aria-label="play pause"
+            onClick={handleStartPlay}
           >
-            <Button variant="contained" size="large" aria-label="rewind" onClick={handleReturnToStart} disabled={cycleCount === 0}>
-              <FastRewindIcon />
-            </Button>
+            {isPlaying ? <PauseIcon fontSize="large" /> : <PlayArrowIcon fontSize="large" />}
+          </Button>
 
-            <Button size="large" aria-label="back" onClick={handleStepBack} disabled={cycleCount === 0}>
-              <UndoIcon />
-            </Button>
+          <Button
+            size="large"
+            aria-label="forward"
+            onClick={handleOneStep}
+          >
+            <RedoIcon fontSize="large" />
+          </Button>
 
-            <Button
-              size="large"
-              aria-label="play pause"
-              onClick={handleStartPlay}
-            >
-              {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-            </Button>
+          <Button size="large" aria-label="restart" onClick={handleReset}>
+            <ClearIcon fontSize="large" />
+          </Button>
+        </ButtonGroup>
 
-            <Button
-              size="large"
-              aria-label="forward"
-              onClick={handleOneStep}
-            >
-              <RedoIcon />
-            </Button>
-
-            <Button size="large" aria-label="restart" onClick={handleReset}>
-              <ClearIcon />
-            </Button>
-          </ButtonGroup>
-
-          <Box sx={{ width: 200, margin: 1 }}>
-            <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+        <SliderContainer>
+          <Box sx={{ width: 200 }}>
+            <Stack spacing={2} direction="row" alignItems="center">
               <SearchIcon fontSize="large" />
               <Slider
                 value={zoomLevel}
@@ -141,8 +142,11 @@ const Controls = () => {
                 onChange={handleZoomChange} />
             </Stack>
           </Box>
-          <Box sx={{ width: 200, margin: 1 }}>
-            <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+        </SliderContainer>
+
+        <SliderContainer>
+          <Box sx={{ width: 200 }}>
+            <Stack spacing={2} direction="row" alignItems="center">
               <SpeedIcon fontSize="large" />
               <Slider
                 value={speedValue}
@@ -153,12 +157,13 @@ const Controls = () => {
                 onChange={handlePlaySpeedChange} />
             </Stack>
           </Box>
-        </RowSection>
+        </SliderContainer>
+      </RowSection>
 
-        <RowSection>
-          <NumbersIcon />
-          <ControlsText>{cycleCount}</ControlsText>
-        </RowSection>
+      <RowSection>
+        <NumbersIcon />
+        <ControlsText>{cycleCount}</ControlsText>
+      </RowSection>
     </ControlsContainer>
   );
 };

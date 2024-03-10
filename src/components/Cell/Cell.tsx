@@ -12,7 +12,7 @@ function Cell({ rowIndex, columnIndex, isAlive }: CellProps) {
   const zoomLevel = useStore(state => state.zoomLevel);
   return (
     <CellContainer
-      zoomLevel={zoomLevel}
+      $zoomLevel={zoomLevel}
       $isAlive={isAlive}
       onClick={() => toggleCell(rowIndex, columnIndex)}
     />

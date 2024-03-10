@@ -25,3 +25,12 @@ export const RowSection = styled.div`
   align-items: center;
   color: ${colors.white};
 `;
+
+export const SliderContainer = styled.div`
+  flex: 1;
+  margin-left: 1.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`

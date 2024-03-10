@@ -23,7 +23,7 @@ export const Title = styled.p`
   color: ${colors.orangeWeb};
   padding: 0;
   margin: 0;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: bold;
   letter-spacing: 4px;
   text-transform: uppercase;
