@@ -1,8 +1,4 @@
-import {
-  HeaderContainer,
-  TitleContainer,
-  Title,
-} from './Header.css';
+import { HeaderContainer, TitleContainer, Title } from './Header.css';
 
 const Header = () => {
   return (

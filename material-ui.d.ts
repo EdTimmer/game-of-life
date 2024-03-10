@@ -1,6 +1,6 @@
 // it could be your App.tsx file or theme file that is included in your tsconfig.json
 import { Theme } from '@mui/material/styles';
-import "@mui/styles";
+import '@mui/styles';
 
 declare module '@mui/material/styles' {
   interface Palette {

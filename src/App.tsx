@@ -5,7 +5,7 @@ import { useStore } from './store';
 import Controls from './components/Controls/Controls';
 
 function App() {
-  const board = useStore(state => state.board)
+  const board = useStore(state => state.board);
 
   return (
     <AppContainer>

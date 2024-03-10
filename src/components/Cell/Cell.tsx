@@ -1,15 +1,20 @@
 import { CellContainer } from './Cell.css';
-import { useStore } from '../../store'
+import { useStore } from '../../store';
 
 interface CellProps {
-  rowIndex: number,
-  columnIndex: number,
-  isAlive: boolean,
+  rowIndex: number;
+  columnIndex: number;
+  isAlive: boolean;
 }
 
 function Cell({ rowIndex, columnIndex, isAlive }: CellProps) {
-  const toggleCell = useStore(state => state.toggleAlive)
-  return <CellContainer $isAlive={isAlive} onClick={() => toggleCell(rowIndex, columnIndex)} />;
+  const toggleCell = useStore(state => state.toggleAlive);
+  return (
+    <CellContainer
+      $isAlive={isAlive}
+      onClick={() => toggleCell(rowIndex, columnIndex)}
+    />
+  );
 }
 
 export default Cell;

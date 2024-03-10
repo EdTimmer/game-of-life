@@ -7,14 +7,14 @@ export const ExplanationContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 export const ExplanationHeader = styled.p`
   margin: 0 0 1.2rem 0;
   font-size: 1.8rem;
   font-weight: bold;
   letter-spacing: 1px;
-`
+`;
 
 export const ExplanationSecion = styled.div`
   width: 100%;
@@ -24,4 +24,4 @@ export const ExplanationSecion = styled.div`
   margin: 0;
   font-size: 1.8rem;
   font-weight: normal;
-`
+`;

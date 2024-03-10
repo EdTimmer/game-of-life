@@ -1,13 +1,13 @@
 export interface CellType {
   isAlive: boolean;
-  aliveNeighborsCount: number;
+  // aliveNeighborsCount: number;
 }
 
-export type BoardType = CellType[][]
+export type BoardType = CellType[][];
 
 export interface CellCoordinatesType {
-  rowIndex: number,
-  columnIndex: number,
+  rowIndex: number;
+  columnIndex: number;
 }
 
-export type CellCoordinatesArrayType = CellCoordinatesType[] | []
+export type CellCoordinatesArrayType = CellCoordinatesType[] | [];

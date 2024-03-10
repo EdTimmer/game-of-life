@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 
 interface CellContainerProps {
-	$isAlive: boolean,
+  $isAlive: boolean;
 }
 
 export const CellContainer = styled.div<CellContainerProps>`
@@ -10,5 +10,6 @@ export const CellContainer = styled.div<CellContainerProps>`
   aspect-ratio: 1;
   border: 1px solid ${colors.black};
   /* border: 1px solid ${colors.oxfordBlue}; */
-  background-color: ${({ $isAlive }) => ($isAlive ? `${colors.orangeWeb}` : `${colors.oxfordBlue}`)};
+  background-color: ${({ $isAlive }) =>
+    $isAlive ? `${colors.orangeWeb}` : `${colors.oxfordBlue}`};
 `;

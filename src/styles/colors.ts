@@ -46,8 +46,6 @@ const colors = {
   orangeWeb: '#fca311ff',
   platinum: '#e5e5e5ff',
   white: '#ffffffff',
-
-
 };
 
 export default colors;

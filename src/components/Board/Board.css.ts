@@ -3,7 +3,7 @@ import colors from '../../styles/colors';
 
 export const ViewportContainer = styled.div`
   width: auto;
-  height: 100rem;
+  height: 80vh;
   overflow: hidden;
   /* border: 4px solid ${colors.barnRed}; */
   /* border: 4px solid ${colors.platinum}; */
@@ -11,7 +11,6 @@ export const ViewportContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
 `;
 
 export const BoardContainer = styled.div`
@@ -23,4 +22,3 @@ export const BoardContainer = styled.div`
 export const RowContainer = styled.div`
   display: flex;
 `;
-

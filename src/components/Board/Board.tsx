@@ -9,9 +9,9 @@ interface Props {
 function Board({ board }: Props) {
   return (
     <ViewportContainer>
-      <BoardContainer className='board'>
+      <BoardContainer className="board">
         {board.map((row, rowIndex) => (
-          <RowContainer className='row' key={`${rowIndex}`}>
+          <RowContainer className="row" key={`${rowIndex}`}>
             {row.map(({ isAlive }, colIndex) => (
               <Cell
                 key={`${rowIndex}-${colIndex}`}
