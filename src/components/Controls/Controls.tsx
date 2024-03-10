@@ -13,6 +13,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
 import NumbersIcon from '@mui/icons-material/Numbers';
+import FastRewindIcon from '@mui/icons-material/FastRewind';
 
 const Controls = () => {
   const board = useStore(state => state.board);
@@ -21,12 +22,13 @@ const Controls = () => {
   const reset = useStore(state => state.reset);
   const toggleAlive = useStore(state => state.toggleAlive);
   const addToLiveCellsHistory = useStore(state => state.addToLiveCellsHistory);
-  const removeFromLiveCellsHistory = useStore(state => state.removeFromLiveCellsHistory)
+  const stepBack = useStore(state => state.stepBack)
+  const returnToStart = useStore(state => state.returnToStart)
 
   const shouldStopRef = useRef<boolean>(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const startRecursivePlay = () => {
+  const handleStartPlay = () => {
     if (!isPlaying) {
       shouldStopRef.current = false; // ref is set to false when starting
       runPlay(shouldStopRef, 250, board, toggleAlive, incrementCycleCount, addToLiveCellsHistory);
@@ -37,21 +39,36 @@ const Controls = () => {
   };
 
   const stopPlay = () => {
-    shouldStopRef.current = true;
-    setIsPlaying(false);
+    if (isPlaying) {
+      shouldStopRef.current = true;
+      setIsPlaying(false);
+    }
   };
 
   const handleReset = () => {
-    stopPlay();
+    stopPlay()
     reset();
   };
 
-  const handleGoBack = () => {
-    removeFromLiveCellsHistory()
-    // givePriorBoard()
+  const handleStepBack = () => {
+    stopPlay()
+    stepBack()
   }
 
-  // console.log('liveCellsHistory :>> ', liveCellsHistory);
+  const handleReturnToStart = () => {
+    stopPlay()
+    returnToStart()
+  }
+
+  const handleOneStep = () => {
+    stopPlay()
+    runCycle(
+      board,
+      toggleAlive,
+      incrementCycleCount,
+      addToLiveCellsHistory,
+    );
+  }
 
   return (
     <ControlsContainer>
@@ -63,14 +80,18 @@ const Controls = () => {
             color="secondary"
             aria-label="Basic button group"
           >
-            <Button size="large" aria-label="back" onClick={handleGoBack} disabled={cycleCount === 0}>
+            <Button size="large" aria-label="rewind" onClick={handleReturnToStart} disabled={cycleCount === 0}>
+              <FastRewindIcon />
+            </Button>
+
+            <Button size="large" aria-label="back" onClick={handleStepBack} disabled={cycleCount === 0}>
               <UndoIcon />
             </Button>
 
             <Button
               size="large"
               aria-label="play pause"
-              onClick={startRecursivePlay}
+              onClick={handleStartPlay}
             >
               {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
             </Button>
@@ -78,14 +99,7 @@ const Controls = () => {
             <Button
               size="large"
               aria-label="forward"
-              onClick={() => {
-                runCycle(
-                  board,
-                  toggleAlive,
-                  incrementCycleCount,
-                  addToLiveCellsHistory,
-                );
-              }}
+              onClick={handleOneStep}
             >
               <RedoIcon />
             </Button>

@@ -5,7 +5,7 @@ const defaultCell: CellType = {
   // aliveNeighborsCount: 0,
 };
 
-export const makePriorBoard = (liveCellsHistory: CellCoordinatesArrayType[]) => {
+export const makeFirstBoard = (liveCellsHistory: CellCoordinatesArrayType[]) => {
   const priorBoard = Array(120)
     .fill(null)
     .map(() =>
@@ -19,10 +19,10 @@ export const makePriorBoard = (liveCellsHistory: CellCoordinatesArrayType[]) => 
   // const priorLiveCells = liveCellsHistory.slice(-1)
   // console.log('priorLiveCells :>> ', priorLiveCells);
 
-  const last = liveCellsHistory.pop()
+  const first = liveCellsHistory[0]
   // console.log('last :>> ', last);
-  if (last?.length) {
-    last.forEach(cell => {
+  if (first.length) {
+    first.forEach(cell => {
       // console.log('cell :>> ', cell);
       priorBoard[cell.rowIndex][cell.columnIndex].isAlive = true
     })

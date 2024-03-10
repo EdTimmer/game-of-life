@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { BoardType, CellCoordinatesArrayType } from './types';
 import { makeEmptyBoard } from './utils/makeEmptyBoard';
 import { makePriorBoard } from './utils/makePriorBoard';
+import { makeFirstBoard } from './utils/makeFirstBoard';
 
 interface GameState {
   board: BoardType;
@@ -10,8 +11,8 @@ interface GameState {
   toggleAlive: (rowIndex: number, columnIndex: number) => void;
   incrementCycleCount: () => void;
   addToLiveCellsHistory: (currentLiveCells: CellCoordinatesArrayType) => void;
-  removeFromLiveCellsHistory: () => void,
-  // givePriorBoard: () => void;
+  stepBack: () => void,
+  returnToStart: () => void;
   reset: () => void;
 }
 
@@ -38,7 +39,7 @@ const handleAddToLiveCellsHistory = (
   return [...liveCellsHistory, currentLiveCells];
 };
 
-const handleRemoveFromLiveCellsHistory = (liveCellsHistory: CellCoordinatesArrayType[]) => {
+const handleStepBack = (liveCellsHistory: CellCoordinatesArrayType[]) => {
   const priorLiveCellsHistory = [...liveCellsHistory]
   priorLiveCellsHistory.pop()
   return priorLiveCellsHistory
@@ -55,6 +56,11 @@ const handleDecrementCount = (count: number) => {
   } else {
     return 0
   }
+}
+
+const handleReturnToStart = (liveCellsHistory: CellCoordinatesArrayType[]) => {
+  const firstBoard = makeFirstBoard(liveCellsHistory)
+  return firstBoard
 }
 
 export const useStore = create<GameState>(set => ({
@@ -74,7 +80,8 @@ export const useStore = create<GameState>(set => ({
         currentLiveCells,
       ),
     })),
-  removeFromLiveCellsHistory: () => set(state => ({ liveCellsHistory: handleRemoveFromLiveCellsHistory(state.liveCellsHistory), board: goBackOneStep(state.liveCellsHistory), cycleCount: handleDecrementCount(state.cycleCount) })),
+  stepBack: () => set(state => ({ liveCellsHistory: handleStepBack(state.liveCellsHistory), board: goBackOneStep(state.liveCellsHistory), cycleCount: handleDecrementCount(state.cycleCount) })),
   // givePriorBoard: () => set(state => ({ board: goBackOneStep(state.liveCellsHistory)})),
+  returnToStart: () => set(state => ({ board: handleReturnToStart(state.liveCellsHistory), cycleCount: 0 })),
   reset: () => set({ board: handleReset(), cycleCount: 0, liveCellsHistory: [] }),
 }));
