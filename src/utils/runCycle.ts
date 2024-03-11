@@ -7,31 +7,16 @@ export const runCycle = (
   incrementCycleCount: () => void,
   addToLiveCellsHistory: (currentAliveCells: CellCoordinatesArrayType) => void,
 ) => {
-  // let currentAliveCells: CellCoordinatesArrayType = [];
-  let currentAliveCells: CellCoordinatesType[] = [];
-  // let currentAliveCells: {
-  //   rowIndex: number;
-  //   columnIndex: number;
-  // }[] = [];
-  let arrayOfCellsToChange: CellCoordinatesType[] = [];
+  let currentAliveCells: CellCoordinatesArrayType = [];
+  let arrayOfCellsToChange: CellCoordinatesArrayType = [];
 
   board.forEach((row, rowIndex) => {
     row.forEach((cell, columnIndex) => {
       // record current live cells
-      // if (cell.isAlive) {
-      //   currentAliveCells = [...currentAliveCells, { rowIndex, columnIndex }];
-      // }
-
       if (cell.isAlive) {
         currentAliveCells.push({ rowIndex, columnIndex });
       }
-
       // calculate next stage live cells
-      // const aliveNeighborsCount = getLiveNeighborsCount(
-      //   rowIndex,
-      //   columnIndex,
-      //   board,
-      // );
       const aliveNeighborsCount = getLiveNeighborsCount(rowIndex, columnIndex, board);
 
       const shouldBeChanged = (cell.isAlive && (aliveNeighborsCount < 2 || aliveNeighborsCount > 3)) ||
@@ -40,26 +25,6 @@ export const runCycle = (
       if (shouldBeChanged) {
         arrayOfCellsToChange.push({ rowIndex, columnIndex });
       }
-
-      // if (cell.isAlive && aliveNeighborsCount < 2) {
-      //   // should be dead from underpopulation
-      //   arrayOfCellsToChange = [
-      //     ...arrayOfCellsToChange,
-      //     { rowIndex, columnIndex },
-      //   ];
-      // } else if (cell.isAlive && aliveNeighborsCount > 3) {
-      //   // should be dead from overpopulation
-      //   arrayOfCellsToChange = [
-      //     ...arrayOfCellsToChange,
-      //     { rowIndex, columnIndex },
-      //   ];
-      // } else if (!cell.isAlive && aliveNeighborsCount === 3) {
-      //   // should be born if next to 3 live cells
-      //   arrayOfCellsToChange = [
-      //     ...arrayOfCellsToChange,
-      //     { rowIndex, columnIndex },
-      //   ];
-      // }
     });
   });
 
@@ -70,5 +35,6 @@ export const runCycle = (
   arrayOfCellsToChange.forEach(cell => {
     toggleAlive(cell.rowIndex, cell.columnIndex);
   });
+  
   incrementCycleCount();
 };

@@ -7,16 +7,14 @@ import { makeFirstBoard } from './utils/makeFirstBoard';
 interface GameState {
   board: BoardType;
   cycleCount: number;
-  liveCellsHistory: CellCoordinatesArrayType[] | [];
+  liveCellsHistory: CellCoordinatesArrayType[];
   zoomLevel: number,
-  // playSpeed: number,
   toggleAlive: (rowIndex: number, columnIndex: number) => void;
   incrementCycleCount: () => void;
   addToLiveCellsHistory: (currentLiveCells: CellCoordinatesArrayType) => void;
   stepBack: () => void,
   returnToStart: () => void;
   changeZoomLevel: (zoomLevel: number) => void;
-  // changePlaySpeed: (playSpeed: number) => void;
   reset: () => void;
 }
 
@@ -72,7 +70,6 @@ export const useStore = create<GameState>(set => ({
   cycleCount: 0,
   liveCellsHistory: [],
   zoomLevel: 26,
-  // playSpeed: 250,
   toggleAlive: (rowIndex: number, columnIndex: number) =>
     set(state => ({
       board: handleToggleAlive(rowIndex, columnIndex, state.board),
@@ -87,9 +84,7 @@ export const useStore = create<GameState>(set => ({
       ),
     })),
   stepBack: () => set(state => ({ liveCellsHistory: handleStepBack(state.liveCellsHistory), board: goBackOneStep(state.liveCellsHistory), cycleCount: handleDecrementCount(state.cycleCount) })),
-  // givePriorBoard: () => set(state => ({ board: goBackOneStep(state.liveCellsHistory)})),
   returnToStart: () => set(state => ({ board: handleReturnToStart(state.liveCellsHistory), cycleCount: 0 })),
   changeZoomLevel: (zoomLevel: number) => set({ zoomLevel: zoomLevel }),
-  // changePlaySpeed: (playSpeed: number) => set({ playSpeed: playSpeed}),
   reset: () => set({ board: handleReset(), cycleCount: 0, liveCellsHistory: [] }),
 }));

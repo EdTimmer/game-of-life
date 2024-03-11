@@ -9,4 +9,4 @@ export interface CellCoordinatesType {
   columnIndex: number;
 }
 
-export type CellCoordinatesArrayType = CellCoordinatesType[] | [];
+export type CellCoordinatesArrayType = CellCoordinatesType[];
