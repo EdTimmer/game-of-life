@@ -11,12 +11,6 @@ export const ControlsContainer = styled.div`
   align-items: center;
 `;
 
-export const ControlsText = styled.p`
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: normal;
-`;
-
 export const RowSection = styled.div`
   margin-left: 2rem;
   display: flex;
@@ -25,12 +19,3 @@ export const RowSection = styled.div`
   align-items: center;
   color: ${colors.white};
 `;
-
-export const SliderContainer = styled.div`
-  flex: 1;
-  margin-left: 1.4rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`

@@ -20,6 +20,5 @@ export const makeFirstBoard = (liveCellsHistory: CellCoordinatesArrayType[]) => 
     })
   }
   
-  // priorBoard[cell.rowIndex][cell.columnIndex].isAlive = true
   return priorBoard
 };

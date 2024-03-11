@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import colors from './styles/colors';
 
 export const AppContainer = styled.div`
-  /* background: #403d39; */
   background: ${colors.black};
-  /* background: ${colors.platinum}; */
   font-family: 'Roboto', sans-serif;
   width: 100vw;
   min-height: 100vh;

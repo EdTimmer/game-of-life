@@ -7,7 +7,7 @@ interface CellProps {
   isAlive: boolean;
 }
 
-function Cell({ rowIndex, columnIndex, isAlive }: CellProps) {
+const Cell = ({ rowIndex, columnIndex, isAlive }: CellProps) => {
   const toggleCell = useStore(state => state.toggleAlive);
   const zoomLevel = useStore(state => state.zoomLevel);
   return (

@@ -9,7 +9,6 @@ export const HeaderContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  /* background: ${colors.barnRed}; */
   background: ${colors.black};
   width: 100%;
   padding: 10px;

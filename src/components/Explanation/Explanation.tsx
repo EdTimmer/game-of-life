@@ -42,9 +42,7 @@ const Explanation = () => {
         <ExplanationSecion>
           <ExplanationHeader>Instructions</ExplanationHeader>
           <p>A. Click on the board to make an initial shape.</p>
-          <p>B. Click on the Run button.</p>
-          <p>C. Repeat step B to advance through cycles.</p>
-          <p>D. Click the Reset button to reset the board.</p>
+          <p>B. Try out control buttons.</p>
         </ExplanationSecion>
       </div>
     </ExplanationContainer>
