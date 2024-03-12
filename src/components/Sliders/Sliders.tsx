@@ -33,7 +33,7 @@ const Sliders = ({ playSpeedRef }: SlidersProps) => {
     <SlidersContainer>
       <Box sx={{ width: 200 }}>
         <Stack spacing={2} direction="row" alignItems="center">
-          <SearchIcon fontSize="large" />
+          <SearchIcon sx={{ height: '3rem', width: '3rem' }} />
           <Slider
             value={zoomLevel}
             step={1}
@@ -46,7 +46,7 @@ const Sliders = ({ playSpeedRef }: SlidersProps) => {
 
       <Box sx={{ width: 200, marginLeft: '20px' }}>
         <Stack spacing={2} direction="row" alignItems="center">
-          <SpeedIcon fontSize="large" />
+          <SpeedIcon sx={{ height: '3rem', width: '3rem' }} />
           <Slider
             value={speedValue}
             step={1}

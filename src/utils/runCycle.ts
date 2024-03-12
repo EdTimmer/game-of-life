@@ -1,11 +1,12 @@
-import { BoardType, CellCoordinatesArrayType, CellCoordinatesType } from '../types';
+import { BoardType, CellCoordinatesArrayType } from '../types';
 import { getLiveNeighborsCount } from './getLiveNeighborsCount';
 
 export const runCycle = (
   board: BoardType,
-  toggleAlive: (rowIndex: number, columnIndex: number) => void,
+  toggleAlive: (rowIndex: number, columnIndex: number, isPanning: boolean) => void,
   incrementCycleCount: () => void,
   addToLiveCellsHistory: (currentAliveCells: CellCoordinatesArrayType) => void,
+  isPanning: boolean,
 ) => {
   let currentAliveCells: CellCoordinatesArrayType = [];
   let arrayOfCellsToChange: CellCoordinatesArrayType = [];
@@ -33,7 +34,7 @@ export const runCycle = (
 
   // toggle cells that should be changed
   arrayOfCellsToChange.forEach(cell => {
-    toggleAlive(cell.rowIndex, cell.columnIndex);
+    toggleAlive(cell.rowIndex, cell.columnIndex, isPanning);
   });
   
   incrementCycleCount();

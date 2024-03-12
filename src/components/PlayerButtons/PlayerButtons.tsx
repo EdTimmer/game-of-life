@@ -12,10 +12,11 @@ import ClearIcon from '@mui/icons-material/Clear';
 import FastRewindIcon from '@mui/icons-material/FastRewind';
 
 interface PlayerButtonsProps {
-  playSpeedRef: React.MutableRefObject<number>
+  playSpeedRef: React.MutableRefObject<number>;
+  isPanning: boolean;
 }
 
-const PlayerButtons = ({ playSpeedRef }: PlayerButtonsProps) => {
+const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
   const board = useStore(state => state.board);
   const cycleCount = useStore(state => state.cycleCount);
   const incrementCycleCount = useStore(state => state.incrementCycleCount);
@@ -24,6 +25,7 @@ const PlayerButtons = ({ playSpeedRef }: PlayerButtonsProps) => {
   const addToLiveCellsHistory = useStore(state => state.addToLiveCellsHistory);
   const stepBack = useStore(state => state.stepBack)
   const returnToStart = useStore(state => state.returnToStart)
+  const liveCellsHistory = useStore(state => state.liveCellsHistory)
 
   const shouldStopRef = useRef<boolean>(false);
 
@@ -49,7 +51,7 @@ const PlayerButtons = ({ playSpeedRef }: PlayerButtonsProps) => {
   const handleStartPlay = () => {
     if (!isPlaying) {
       shouldStopRef.current = false; // ref is set to false when starting
-      runPlay(shouldStopRef, playSpeedRef, board, toggleAlive, incrementCycleCount, addToLiveCellsHistory);
+      runPlay(shouldStopRef, playSpeedRef, board, toggleAlive, incrementCycleCount, addToLiveCellsHistory, isPanning);
       setIsPlaying(true);
     } else {
       stopPlay();
@@ -57,12 +59,14 @@ const PlayerButtons = ({ playSpeedRef }: PlayerButtonsProps) => {
   };
 
   const handleOneStep = () => {
+    console.log('liveCellsHistory :>> ', liveCellsHistory);
     stopPlay()
     runCycle(
       board,
       toggleAlive,
       incrementCycleCount,
       addToLiveCellsHistory,
+      isPanning
     );
   }
 

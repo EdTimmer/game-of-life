@@ -10,10 +10,12 @@ export const ViewportContainer = styled.div`
   align-items: center;
 `;
 
-export const BoardContainer = styled.div`
+export const BoardContainer = styled.div<{ $translateX: number, $translateY: number }>`
   user-select: none;
   width: fit-content;
   height: fit-content;
+  transform: ${({ $translateX, $translateY }) => `translate(${$translateX}px, ${$translateY}px)`};
+
 `;
 
 export const RowContainer = styled.div`

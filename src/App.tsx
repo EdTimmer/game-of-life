@@ -1,10 +1,9 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { AppContainer, CenterSection } from './App.css';
-import Board from './components/Board/Board';
 import Header from './components/Header/Header';
 import { useStore } from './store';
-import Controls from './components/Controls/Controls';
 import { theme } from './styles/theme';
+import BoardAndControls from './components/BoardAndControls/BoardAndControls';
 
 function App() {
   const board = useStore(state => state.board);
@@ -14,8 +13,7 @@ function App() {
       <AppContainer>
         <Header />
         <CenterSection>
-          <Board board={board} />
-          <Controls />
+          <BoardAndControls />
         </CenterSection>
       </AppContainer>
     </ThemeProvider>

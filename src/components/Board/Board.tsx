@@ -4,20 +4,31 @@ import { BoardContainer, RowContainer, ViewportContainer } from './Board.css';
 
 interface Props {
   board: BoardType;
+  onMouseDown: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onMouseMove: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onMouseUp: () => void;
+  translateX: number;
+  translateY: number;
+  isPanning: boolean;
 }
 
-function Board({ board }: Props) {
+function Board({ board, onMouseDown, onMouseMove, onMouseUp, translateX, translateY, isPanning }: Props) {
   return (
-    <ViewportContainer>
-      <BoardContainer className="board">
+    <ViewportContainer
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp} >
+      <BoardContainer $translateX={translateX} $translateY={translateY}>
         {board.map((row, rowIndex) => (
-          <RowContainer className="row" key={`${rowIndex}`}>
+          <RowContainer key={`${rowIndex}`}>
             {row.map(({ isAlive }, colIndex) => (
               <Cell
                 key={`${rowIndex}-${colIndex}`}
                 isAlive={isAlive}
                 rowIndex={rowIndex}
                 columnIndex={colIndex}
+                isPanning={isPanning}
               />
             ))}
           </RowContainer>
