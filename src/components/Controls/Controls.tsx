@@ -9,13 +9,15 @@ import IconButton from '@mui/material/IconButton';
 import PanToolIcon from '@mui/icons-material/PanTool';
 import PanToolIconOutlined from '@mui/icons-material/PanToolOutlined';
 import Explanation from '../Explanation/Explanation';
+import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
 
 interface ControlsProps {
   isPanning: boolean;
   setIsPanning: (isPanning: boolean) => void;
+  onCenter: () => void;
 }
 
-const Controls = ({ isPanning, setIsPanning }: ControlsProps) => {
+const Controls = ({ isPanning, setIsPanning, onCenter }: ControlsProps) => {
   const playSpeedRef = useRef<number>(15);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,6 +48,10 @@ const Controls = ({ isPanning, setIsPanning }: ControlsProps) => {
         {
           isPanning ? <PanToolIcon sx={{ height: '3rem', width: '3rem' }} /> : <PanToolIconOutlined sx={{ height: '3rem', width: '3rem' }} />
         }
+      </IconButton>
+
+      <IconButton aria-label="pan" color="secondary" onClick={onCenter}>
+        <CenterFocusStrongIcon sx={{ height: '3rem', width: '3rem' }} />
       </IconButton>
 
 

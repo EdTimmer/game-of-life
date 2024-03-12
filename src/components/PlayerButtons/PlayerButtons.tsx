@@ -81,6 +81,7 @@ const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
       size="large"
       color="secondary"
       aria-label="Basic button group"
+      disabled={isPanning}
     >
       <Button variant="contained" size="large" aria-label="rewind" onClick={handleReturnToStart} disabled={cycleCount === 0}>
         <FastRewindIcon fontSize="large" />

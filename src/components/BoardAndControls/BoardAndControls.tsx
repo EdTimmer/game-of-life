@@ -38,6 +38,11 @@ const BoardAndControls = () => {
     setIsDragging(false);
   };
 
+  const onCenter = () => {
+    setTranslateX(0);
+    setTranslateY(0);
+  }
+
   return (
     <BoardAndControlsContainer>
       <Board board={board} onMouseDown={onMouseDown}
@@ -47,7 +52,7 @@ const BoardAndControls = () => {
         translateY={translateY}
         isPanning={isPanning}
       />
-      <Controls isPanning={isPanning} setIsPanning={setIsPanning} />
+      <Controls isPanning={isPanning} setIsPanning={setIsPanning} onCenter={onCenter} />
     </BoardAndControlsContainer>
   );
 }
