@@ -28,33 +28,40 @@ const Controls = ({ isPanning, setIsPanning, onCenter }: ControlsProps) => {
 
   return (
     <ControlsContainer>
+
       <RowSection>
         <IconButton aria-label="info" color="secondary" onClick={handleOpenModal}>
           <InfoIcon sx={{ height: '3rem', width: '3rem' }} />
         </IconButton>
+      </RowSection>
 
-        <ModalComponent isModalOpen={isModalOpen} handleClose={handleCloseModal}>
-          <Explanation />
-        </ModalComponent>
+      <ModalComponent isModalOpen={isModalOpen} handleClose={handleCloseModal}>
+        <Explanation />
+      </ModalComponent>
 
+      <RowSection>
         <PlayerButtons playSpeedRef={playSpeedRef} isPanning={isPanning} />
+      </RowSection>
 
+      <RowSection>
         <Sliders playSpeedRef={playSpeedRef} />
       </RowSection>
 
-      <Counter />
+      <RowSection>
+        <Counter />
+      </RowSection>
 
-      <IconButton aria-label="pan" color="secondary" onClick={handleTogglePanning}>
-        {
-          isPanning ? <PanToolIcon sx={{ height: '3rem', width: '3rem' }} /> : <PanToolIconOutlined sx={{ height: '3rem', width: '3rem' }} />
-        }
-      </IconButton>
+      <RowSection>
+        <IconButton aria-label="pan" color="secondary" onClick={handleTogglePanning}>
+          {
+            isPanning ? <PanToolIcon sx={{ height: '3rem', width: '3rem' }} /> : <PanToolIconOutlined sx={{ height: '3rem', width: '3rem' }} />
+          }
+        </IconButton>
 
-      <IconButton aria-label="pan" color="secondary" onClick={onCenter}>
-        <CenterFocusStrongIcon sx={{ height: '3rem', width: '3rem' }} />
-      </IconButton>
-
-
+        <IconButton aria-label="pan" color="secondary" onClick={onCenter} sx={{ marginLeft: '20px' }}>
+          <CenterFocusStrongIcon sx={{ height: '3rem', width: '3rem' }} />
+        </IconButton>
+      </RowSection>
     </ControlsContainer>
   );
 };

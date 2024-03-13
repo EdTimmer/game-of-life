@@ -31,7 +31,7 @@ const Sliders = ({ playSpeedRef }: SlidersProps) => {
 
   return (
     <SlidersContainer>
-      <Box sx={{ width: 200 }}>
+      <Box sx={{ width: 200, marginLeft: '20px', marginRight: '30px' }}>
         <Stack spacing={2} direction="row" alignItems="center">
           <SearchIcon sx={{ height: '3rem', width: '3rem' }} />
           <Slider
@@ -44,7 +44,7 @@ const Sliders = ({ playSpeedRef }: SlidersProps) => {
         </Stack>
       </Box>
 
-      <Box sx={{ width: 200, marginLeft: '20px' }}>
+      <Box sx={{ width: 200, marginLeft: '20px', marginRight: '20px' }}>
         <Stack spacing={2} direction="row" alignItems="center">
           <SpeedIcon sx={{ height: '3rem', width: '3rem' }} />
           <Slider

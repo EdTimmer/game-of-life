@@ -7,15 +7,15 @@ export const ControlsContainer = styled.div`
   margin-top: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 
 export const RowSection = styled.div`
-  margin-left: 2rem;
+  margin: 0 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   color: ${colors.white};
 `;

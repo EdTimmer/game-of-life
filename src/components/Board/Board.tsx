@@ -18,7 +18,9 @@ function Board({ board, onMouseDown, onMouseMove, onMouseUp, translateX, transla
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp} >
+      onMouseLeave={onMouseUp}
+      $isPanning={isPanning}
+    >
       <BoardContainer $translateX={translateX} $translateY={translateY}>
         {board.map((row, rowIndex) => (
           <RowContainer key={`${rowIndex}`}>

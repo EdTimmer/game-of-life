@@ -10,12 +10,3 @@ export const AppContainer = styled.div`
   flex-direction: column;
   color: ${colors.black};
 `;
-
-export const CenterSection = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
