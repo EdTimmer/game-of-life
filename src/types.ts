@@ -10,3 +10,10 @@ export interface CellCoordinatesType {
 }
 
 export type CellCoordinatesArrayType = CellCoordinatesType[];
+
+export enum ShapeEnum {
+  GLIDER = 'GLIDER',
+  PULSAR = 'PULSAR',
+  GLIDER_GUN = 'GLIDER_GUN',
+  RANDOM = 'RANDOM',
+}

@@ -10,6 +10,8 @@ import PanToolIcon from '@mui/icons-material/PanTool';
 import PanToolIconOutlined from '@mui/icons-material/PanToolOutlined';
 import Explanation from '../Explanation/Explanation';
 import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
+import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
+import Shapes from '../Shapes/Shapes';
 
 interface ControlsProps {
   isPanning: boolean;
@@ -21,22 +23,37 @@ const Controls = ({ isPanning, setIsPanning, onCenter }: ControlsProps) => {
   const playSpeedRef = useRef<number>(15);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleOpenModal = () => setIsModalOpen(true);
+  const handleOpenInfoModal = () => {
+    setIsInfo(true);
+    setIsModalOpen(true);
+  }
+
+  const handleOpenShapesModal = () => {
+    setIsInfo(false);
+    setIsModalOpen(true);
+  }
+
   const handleCloseModal = () => setIsModalOpen(false);
+  const [isInfo, setIsInfo] = useState(true);
 
   const handleTogglePanning = () => setIsPanning(!isPanning);
+
+  // onClick={() => makeShape('glider')}
 
   return (
     <ControlsContainer>
 
       <RowSection>
-        <IconButton aria-label="info" color="secondary" onClick={handleOpenModal}>
+        <IconButton aria-label="info" color="secondary" onClick={handleOpenInfoModal}>
           <InfoIcon sx={{ height: '3rem', width: '3rem' }} />
         </IconButton>
       </RowSection>
 
       <ModalComponent isModalOpen={isModalOpen} handleClose={handleCloseModal}>
-        <Explanation />
+        {
+          isInfo ?
+          <Explanation /> : <Shapes handleClose={handleCloseModal} />
+        }
       </ModalComponent>
 
       <RowSection>
@@ -48,10 +65,6 @@ const Controls = ({ isPanning, setIsPanning, onCenter }: ControlsProps) => {
       </RowSection>
 
       <RowSection>
-        <Counter />
-      </RowSection>
-
-      <RowSection>
         <IconButton aria-label="pan" color="secondary" onClick={handleTogglePanning}>
           {
             isPanning ? <PanToolIcon sx={{ height: '3rem', width: '3rem' }} /> : <PanToolIconOutlined sx={{ height: '3rem', width: '3rem' }} />
@@ -60,6 +73,16 @@ const Controls = ({ isPanning, setIsPanning, onCenter }: ControlsProps) => {
 
         <IconButton aria-label="pan" color="secondary" onClick={onCenter} sx={{ marginLeft: '20px' }}>
           <CenterFocusStrongIcon sx={{ height: '3rem', width: '3rem' }} />
+        </IconButton>
+      </RowSection>
+
+      <RowSection>
+        <Counter />
+      </RowSection>
+
+      <RowSection>
+        <IconButton aria-label="saved" color="secondary" onClick={handleOpenShapesModal} sx={{ marginLeft: '20px' }}>
+          <FolderSpecialIcon sx={{ height: '3rem', width: '3rem' }} />
         </IconButton>
       </RowSection>
     </ControlsContainer>

@@ -13,12 +13,13 @@ export const makeFirstBoard = (liveCellsHistory: CellCoordinatesArrayType[]) => 
         .map(() => ({ ...defaultCell })),
     );
 
+
   const first = liveCellsHistory[0]
   if (first.length) {
     first.forEach(cell => {
       priorBoard[cell.rowIndex][cell.columnIndex].isAlive = true
     })
   }
-  
+
   return priorBoard
 };
