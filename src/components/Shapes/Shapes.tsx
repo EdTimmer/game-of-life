@@ -1,4 +1,5 @@
 import { useStore } from '../../store';
+import { ShapeEnum } from '../../types';
 import {
   ShapesContainer,
   ShapesHeader,
@@ -13,33 +14,21 @@ interface ShapesProps {
 const Shapes = ({ handleClose }: ShapesProps) => {
   const makeShape = useStore(state => state.makeShape)
 
-  const handleShapeSelection = (shape: string) => {
-    switch (shape) {
-      case "GLIDER":
-        makeShape("glider")
-        break;
-      case "PULSAR":
-        makeShape("pulsar")
-        break;
-      case "GLIDER_GUN":
-        makeShape("gliderGun")
-        break;
-      case "RANDOM":
-        makeShape("random")
-        break;
-      default:
-        makeShape("glider")
-    }
+  const handleShapeSelection = (shape: ShapeEnum) => {
+    makeShape(shape)
     handleClose()
   }
 
   return (
     <ShapesContainer>
-
       <ShapesSecion>
         <ShapesHeader>Shapes</ShapesHeader>
-        <Button variant="contained" color="secondary" size="large" aria-label="glider" onClick={() => handleShapeSelection("GLIDER")} sx={{ width: '12rem' }} >
+        <Button variant="contained" color="secondary" size="large" aria-label="glider" onClick={() => handleShapeSelection(ShapeEnum.GLIDER)} sx={{ width: '12rem' }} >
           GLIDER
+        </Button>
+
+        <Button variant="contained" color="secondary" size="large" aria-label="pulsar precursor" onClick={() => handleShapeSelection(ShapeEnum.PULSAR_PRECURSOR)} sx={{ width: '12rem' }} >
+          PULSAR PRECUROR
         </Button>
       </ShapesSecion>
     </ShapesContainer>

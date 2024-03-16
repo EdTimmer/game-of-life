@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { BoardType, CellCoordinatesArrayType } from './types';
+import { BoardType, CellCoordinatesArrayType, ShapeEnum } from './types';
 import { makeEmptyBoard } from './utils/makeEmptyBoard';
 import { makePriorBoard } from './utils/makePriorBoard';
 import { makeFirstBoard } from './utils/makeFirstBoard';
@@ -15,7 +15,7 @@ interface GameState {
   addToLiveCellsHistory: (currentLiveCells: CellCoordinatesArrayType) => void;
   stepBack: () => void,
   returnToStart: () => void;
-  makeShape: (shape: string) => void;
+  makeShape: (shape: ShapeEnum) => void;
   changeZoomLevel: (zoomLevel: number) => void;
   reset: () => void;
 }
@@ -71,7 +71,7 @@ const handleReturnToStart = (liveCellsHistory: CellCoordinatesArrayType[]) => {
   return firstBoard
 }
 
-const handleMakeShape = (shape: string) => {
+const handleMakeShape = (shape: ShapeEnum) => {
   return makeShape(shape)
 }
 
@@ -94,7 +94,7 @@ export const useStore = create<GameState>(set => ({
     })),
   stepBack: () => set(state => ({ liveCellsHistory: handleStepBack(state.liveCellsHistory), board: goBackOneStep(state.liveCellsHistory), cycleCount: handleDecrementCount(state.cycleCount) })),
   returnToStart: () => set(state => ({ board: handleReturnToStart(state.liveCellsHistory), cycleCount: 0, liveCellsHistory: []})),
-  makeShape: (shape: string) => set({ board: handleMakeShape(shape), cycleCount: 0, liveCellsHistory: [] }),
+  makeShape: (shape: ShapeEnum) => set({ board: handleMakeShape(shape), cycleCount: 0, liveCellsHistory: [] }),
   changeZoomLevel: (zoomLevel: number) => set({ zoomLevel: zoomLevel }),
   reset: () => set({ board: handleReset(), cycleCount: 0, liveCellsHistory: [] }),
 }));

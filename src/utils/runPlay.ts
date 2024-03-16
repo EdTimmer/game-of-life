@@ -27,7 +27,7 @@ export const runPlay = (
     // Calculate the corresponding milliseconds number using the inverse relationship
     // The formula adjusts the stepSize according to the position of slider value in its range
     let msSpeed = 2000 - stepSize * (delay - 1);
-    console.log('msSpeed :>> ', msSpeed);
+    // console.log('msSpeed :>> ', msSpeed);
     return Math.round(msSpeed);
   }
 

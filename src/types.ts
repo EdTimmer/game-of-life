@@ -13,6 +13,7 @@ export type CellCoordinatesArrayType = CellCoordinatesType[];
 
 export enum ShapeEnum {
   GLIDER = 'GLIDER',
+  PULSAR_PRECURSOR = 'PULSAR_PRECURSOR',
   PULSAR = 'PULSAR',
   GLIDER_GUN = 'GLIDER_GUN',
   RANDOM = 'RANDOM',
