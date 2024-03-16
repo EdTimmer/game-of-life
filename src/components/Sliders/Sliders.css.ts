@@ -9,4 +9,4 @@ export const SlidersContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`
+`;

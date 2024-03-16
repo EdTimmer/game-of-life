@@ -12,7 +12,15 @@ interface Props {
   isPanning: boolean;
 }
 
-function Board({ board, onMouseDown, onMouseMove, onMouseUp, translateX, translateY, isPanning }: Props) {
+function Board({
+  board,
+  onMouseDown,
+  onMouseMove,
+  onMouseUp,
+  translateX,
+  translateY,
+  isPanning,
+}: Props) {
   return (
     <ViewportContainer
       onMouseDown={onMouseDown}

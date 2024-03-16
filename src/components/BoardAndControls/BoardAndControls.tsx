@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { useStore } from '../../store';
-import Board from "../Board/Board";
-import Controls from "../Controls/Controls";
-import { BoardAndControlsContainer } from "./BoardAndControls.css";
+import Board from '../Board/Board';
+import Controls from '../Controls/Controls';
+import { BoardAndControlsContainer } from './BoardAndControls.css';
 
 const BoardAndControls = () => {
   const board = useStore(state => state.board);
@@ -23,7 +23,7 @@ const BoardAndControls = () => {
       setStartX(e.clientX - translateX);
       setStartY(e.clientY - translateY);
     }
-    return
+    return;
   };
 
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -41,20 +41,26 @@ const BoardAndControls = () => {
   const onCenter = () => {
     setTranslateX(0);
     setTranslateY(0);
-  }
+  };
 
   return (
     <BoardAndControlsContainer>
-      <Board board={board} onMouseDown={onMouseDown}
+      <Board
+        board={board}
+        onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
-        translateX={translateX} 
+        translateX={translateX}
         translateY={translateY}
         isPanning={isPanning}
       />
-      <Controls isPanning={isPanning} setIsPanning={setIsPanning} onCenter={onCenter} />
+      <Controls
+        isPanning={isPanning}
+        setIsPanning={setIsPanning}
+        onCenter={onCenter}
+      />
     </BoardAndControlsContainer>
   );
-}
+};
 
 export default BoardAndControls;

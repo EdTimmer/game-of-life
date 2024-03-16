@@ -11,8 +11,8 @@ export const theme = createTheme({
     },
     action: {
       disabledBackground: `${colors.platinum}`,
-      disabled: `${colors.teal}`
-    }
+      disabled: `${colors.teal}`,
+    },
   },
   components: {
     MuiSlider: {

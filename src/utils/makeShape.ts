@@ -1,11 +1,12 @@
 import { CellType, ShapeEnum } from '../types';
 import { glider } from '../shapesData/glider';
 import { pulsarPrecursor } from '../shapesData/pulsarPrecursor';
+import { whyNot } from '../shapesData/whyNot';
+import { lightweightSpaceship } from '../shapesData/lightweightSpaceship';
 
 const defaultCell: CellType = {
   isAlive: false,
 };
-
 
 export const makeShape = (shape: ShapeEnum) => {
   const newBoard = Array(120)
@@ -22,8 +23,18 @@ export const makeShape = (shape: ShapeEnum) => {
         newBoard[cell.rowIndex][cell.columnIndex].isAlive = true;
       });
       break;
+    case ShapeEnum.LIGHTWEIGHT_SPACESHIP:
+      lightweightSpaceship.forEach(cell => {
+        newBoard[cell.rowIndex][cell.columnIndex].isAlive = true;
+      });
+      break;
     case ShapeEnum.PULSAR_PRECURSOR:
       pulsarPrecursor.forEach(cell => {
+        newBoard[cell.rowIndex][cell.columnIndex].isAlive = true;
+      });
+      break;
+    case ShapeEnum.WHY_NOT:
+      whyNot.forEach(cell => {
         newBoard[cell.rowIndex][cell.columnIndex].isAlive = true;
       });
       break;
@@ -32,5 +43,5 @@ export const makeShape = (shape: ShapeEnum) => {
         newBoard[cell.rowIndex][cell.columnIndex].isAlive = true;
       });
   }
-  return newBoard
+  return newBoard;
 };

@@ -8,15 +8,18 @@ export const ViewportContainer = styled.div<{ $isPanning: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: ${({ $isPanning }) => $isPanning ? 'grab' : 'pointer'};
+  cursor: ${({ $isPanning }) => ($isPanning ? 'grab' : 'pointer')};
 `;
 
-export const BoardContainer = styled.div<{ $translateX: number, $translateY: number }>`
+export const BoardContainer = styled.div<{
+  $translateX: number;
+  $translateY: number;
+}>`
   user-select: none;
   width: fit-content;
   height: fit-content;
-  transform: ${({ $translateX, $translateY }) => `translate(${$translateX}px, ${$translateY}px)`};
-
+  transform: ${({ $translateX, $translateY }) =>
+    `translate(${$translateX}px, ${$translateY}px)`};
 `;
 
 export const RowContainer = styled.div`

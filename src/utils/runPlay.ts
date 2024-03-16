@@ -6,7 +6,11 @@ export const runPlay = (
   shouldStop: MutableRefObject<boolean>,
   delay: MutableRefObject<number>,
   board: BoardType,
-  toggleAlive: (rowIndex: number, columnIndex: number, isPanning: boolean) => void,
+  toggleAlive: (
+    rowIndex: number,
+    columnIndex: number,
+    isPanning: boolean,
+  ) => void,
   incrementCycleCount: () => void,
   addToLiveCellsHistory: (currentAliveCells: CellCoordinatesArrayType) => void,
   isPanning: boolean,
@@ -14,7 +18,13 @@ export const runPlay = (
   if (shouldStop.current) {
     return; // Stop the recursion
   }
-  runCycle(board, toggleAlive, incrementCycleCount, addToLiveCellsHistory, isPanning);
+  runCycle(
+    board,
+    toggleAlive,
+    incrementCycleCount,
+    addToLiveCellsHistory,
+    isPanning,
+  );
 
   const convertDelay = (delay: number) => {
     if (delay < 1 || delay > 20) {
@@ -29,12 +39,21 @@ export const runPlay = (
     let msSpeed = 2000 - stepSize * (delay - 1);
     // console.log('msSpeed :>> ', msSpeed);
     return Math.round(msSpeed);
-  }
+  };
 
   // Schedule the next execution only if the condition is not yet met
-  if (typeof delay.current === "number") {
+  if (typeof delay.current === 'number') {
     setTimeout(
-      () => runPlay(shouldStop, delay, board, toggleAlive, incrementCycleCount, addToLiveCellsHistory, isPanning),
+      () =>
+        runPlay(
+          shouldStop,
+          delay,
+          board,
+          toggleAlive,
+          incrementCycleCount,
+          addToLiveCellsHistory,
+          isPanning,
+        ),
       convertDelay(delay.current),
     );
   }

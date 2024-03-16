@@ -18,6 +18,6 @@ const Cell = ({ rowIndex, columnIndex, isAlive, isPanning }: CellProps) => {
       onClick={() => toggleCell(rowIndex, columnIndex, isPanning)}
     />
   );
-}
+};
 
 export default Cell;

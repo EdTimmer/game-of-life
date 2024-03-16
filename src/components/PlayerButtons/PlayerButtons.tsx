@@ -23,9 +23,9 @@ const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
   const reset = useStore(state => state.reset);
   const toggleAlive = useStore(state => state.toggleAlive);
   const addToLiveCellsHistory = useStore(state => state.addToLiveCellsHistory);
-  const stepBack = useStore(state => state.stepBack)
-  const returnToStart = useStore(state => state.returnToStart)
-  const liveCellsHistory = useStore(state => state.liveCellsHistory)
+  const stepBack = useStore(state => state.stepBack);
+  const returnToStart = useStore(state => state.returnToStart);
+  const liveCellsHistory = useStore(state => state.liveCellsHistory);
 
   const shouldStopRef = useRef<boolean>(false);
 
@@ -39,19 +39,27 @@ const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
   };
 
   const handleReturnToStart = () => {
-    stopPlay()
-    returnToStart()
-  }
+    stopPlay();
+    returnToStart();
+  };
 
   const handleStepBack = () => {
-    stopPlay()
-    stepBack()
-  }
+    stopPlay();
+    stepBack();
+  };
 
   const handleStartPlay = () => {
     if (!isPlaying) {
       shouldStopRef.current = false; // ref is set to false when starting
-      runPlay(shouldStopRef, playSpeedRef, board, toggleAlive, incrementCycleCount, addToLiveCellsHistory, isPanning);
+      runPlay(
+        shouldStopRef,
+        playSpeedRef,
+        board,
+        toggleAlive,
+        incrementCycleCount,
+        addToLiveCellsHistory,
+        isPanning,
+      );
       setIsPlaying(true);
     } else {
       stopPlay();
@@ -60,18 +68,18 @@ const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
 
   const handleOneStep = () => {
     console.log('liveCellsHistory :>> ', liveCellsHistory);
-    stopPlay()
+    stopPlay();
     runCycle(
       board,
       toggleAlive,
       incrementCycleCount,
       addToLiveCellsHistory,
-      isPanning
+      isPanning,
     );
-  }
+  };
 
   const handleReset = () => {
-    stopPlay()
+    stopPlay();
     reset();
   };
 
@@ -83,27 +91,34 @@ const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
       aria-label="Basic button group"
       disabled={isPanning}
     >
-      <Button variant="contained" size="large" aria-label="rewind" onClick={handleReturnToStart} disabled={cycleCount === 0}>
+      <Button
+        variant="contained"
+        size="large"
+        aria-label="rewind"
+        onClick={handleReturnToStart}
+        disabled={cycleCount === 0}
+      >
         <FastRewindIcon fontSize="large" />
       </Button>
 
-      <Button size="large" aria-label="back" onClick={handleStepBack} disabled={cycleCount === 0}>
+      <Button
+        size="large"
+        aria-label="back"
+        onClick={handleStepBack}
+        disabled={cycleCount === 0}
+      >
         <UndoIcon fontSize="large" />
       </Button>
 
-      <Button
-        size="large"
-        aria-label="play pause"
-        onClick={handleStartPlay}
-      >
-        {isPlaying ? <PauseIcon fontSize="large" /> : <PlayArrowIcon fontSize="large" />}
+      <Button size="large" aria-label="play pause" onClick={handleStartPlay}>
+        {isPlaying ? (
+          <PauseIcon fontSize="large" />
+        ) : (
+          <PlayArrowIcon fontSize="large" />
+        )}
       </Button>
 
-      <Button
-        size="large"
-        aria-label="forward"
-        onClick={handleOneStep}
-      >
+      <Button size="large" aria-label="forward" onClick={handleOneStep}>
         <RedoIcon fontSize="large" />
       </Button>
 
@@ -111,7 +126,7 @@ const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
         <ClearIcon fontSize="large" />
       </Button>
     </ButtonGroup>
-  )
-}
+  );
+};
 
-export default PlayerButtons
+export default PlayerButtons;

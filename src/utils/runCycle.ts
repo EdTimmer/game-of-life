@@ -3,7 +3,11 @@ import { getLiveNeighborsCount } from './getLiveNeighborsCount';
 
 export const runCycle = (
   board: BoardType,
-  toggleAlive: (rowIndex: number, columnIndex: number, isPanning: boolean) => void,
+  toggleAlive: (
+    rowIndex: number,
+    columnIndex: number,
+    isPanning: boolean,
+  ) => void,
   incrementCycleCount: () => void,
   addToLiveCellsHistory: (currentAliveCells: CellCoordinatesArrayType) => void,
   isPanning: boolean,
@@ -18,9 +22,15 @@ export const runCycle = (
         currentAliveCells.push({ rowIndex, columnIndex });
       }
       // calculate next stage live cells
-      const aliveNeighborsCount = getLiveNeighborsCount(rowIndex, columnIndex, board);
+      const aliveNeighborsCount = getLiveNeighborsCount(
+        rowIndex,
+        columnIndex,
+        board,
+      );
 
-      const shouldBeChanged = (cell.isAlive && (aliveNeighborsCount < 2 || aliveNeighborsCount > 3)) ||
+      const shouldBeChanged =
+        (cell.isAlive &&
+          (aliveNeighborsCount < 2 || aliveNeighborsCount > 3)) ||
         (!cell.isAlive && aliveNeighborsCount === 3);
 
       if (shouldBeChanged) {
@@ -36,6 +46,6 @@ export const runCycle = (
   arrayOfCellsToChange.forEach(cell => {
     toggleAlive(cell.rowIndex, cell.columnIndex, isPanning);
   });
-  
+
   incrementCycleCount();
 };

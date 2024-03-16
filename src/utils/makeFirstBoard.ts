@@ -4,7 +4,9 @@ const defaultCell: CellType = {
   isAlive: false,
 };
 
-export const makeFirstBoard = (liveCellsHistory: CellCoordinatesArrayType[]) => {
+export const makeFirstBoard = (
+  liveCellsHistory: CellCoordinatesArrayType[],
+) => {
   const priorBoard = Array(120)
     .fill(null)
     .map(() =>
@@ -13,13 +15,12 @@ export const makeFirstBoard = (liveCellsHistory: CellCoordinatesArrayType[]) => 
         .map(() => ({ ...defaultCell })),
     );
 
-
-  const first = liveCellsHistory[0]
+  const first = liveCellsHistory[0];
   if (first.length) {
     first.forEach(cell => {
-      priorBoard[cell.rowIndex][cell.columnIndex].isAlive = true
-    })
+      priorBoard[cell.rowIndex][cell.columnIndex].isAlive = true;
+    });
   }
 
-  return priorBoard
+  return priorBoard;
 };
