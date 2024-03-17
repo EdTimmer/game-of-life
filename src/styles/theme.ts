@@ -4,7 +4,7 @@ import colors from './colors';
 export const theme = createTheme({
   palette: {
     primary: {
-      main: `${colors.prussianBlue}`,
+      main: `${colors.white}`,
     },
     secondary: {
       main: `${colors.orangeWeb}`,

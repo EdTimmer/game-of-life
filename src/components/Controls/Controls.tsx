@@ -1,16 +1,16 @@
 import { useRef, useState } from 'react';
 import { ControlsContainer, RowSection } from './Controls.css';
-import Counter from '../Counter/Counter';
 import PlayerButtons from '../PlayerButtons/PlayerButtons';
 import Sliders from '../Sliders/Sliders';
 import ModalComponent from '../Modal/Modal';
-import InfoIcon from '@mui/icons-material/Info';
-import IconButton from '@mui/material/IconButton';
 import PanToolIcon from '@mui/icons-material/PanTool';
 import PanToolIconOutlined from '@mui/icons-material/PanToolOutlined';
+import InfoIconOutlined from '@mui/icons-material/InfoOutlined';
+import FolderIconOutlined from '@mui/icons-material/FolderOutlined';
 import Explanation from '../Explanation/Explanation';
 import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
-import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Shapes from '../Shapes/Shapes';
 
 interface ControlsProps {
@@ -38,26 +38,14 @@ const Controls = ({ isPanning, setIsPanning, onCenter }: ControlsProps) => {
 
   const handleTogglePanning = () => setIsPanning(!isPanning);
 
-  // onClick={() => makeShape('glider')}
-
   return (
     <ControlsContainer>
-      <RowSection>
-        <IconButton
-          aria-label="info"
-          color="secondary"
-          onClick={handleOpenInfoModal}
-        >
-          <InfoIcon sx={{ height: '3rem', width: '3rem' }} />
-        </IconButton>
-      </RowSection>
-
       <ModalComponent isModalOpen={isModalOpen} handleClose={handleCloseModal}>
         {isInfo ? <Explanation /> : <Shapes handleClose={handleCloseModal} />}
       </ModalComponent>
 
       <RowSection>
-        <PlayerButtons playSpeedRef={playSpeedRef} isPanning={isPanning} />
+        <PlayerButtons playSpeedRef={playSpeedRef} isPanning={isPanning} isModalOpen={isModalOpen} />
       </RowSection>
 
       <RowSection>
@@ -65,41 +53,44 @@ const Controls = ({ isPanning, setIsPanning, onCenter }: ControlsProps) => {
       </RowSection>
 
       <RowSection>
-        <IconButton
-          aria-label="pan"
+        <ButtonGroup
+          variant="outlined"
+          size="large"
           color="secondary"
-          onClick={handleTogglePanning}
+          aria-label="controls button group"
         >
-          {isPanning ? (
-            <PanToolIcon sx={{ height: '3rem', width: '3rem' }} />
-          ) : (
-            <PanToolIconOutlined sx={{ height: '3rem', width: '3rem' }} />
-          )}
-        </IconButton>
+          <Button
+            aria-label="info button"
+            onClick={handleOpenInfoModal}
+          >
+            <InfoIconOutlined fontSize="large" />
+          </Button>
+          
+          <Button
+            aria-label="pan"
+            onClick={handleTogglePanning}
+          >
+            {isPanning ? (
+              <PanToolIcon fontSize="large" />
+            ) : (
+              <PanToolIconOutlined fontSize="large" />
+            )}
+          </Button>
 
-        <IconButton
-          aria-label="pan"
-          color="secondary"
-          onClick={onCenter}
-          sx={{ marginLeft: '20px' }}
-        >
-          <CenterFocusStrongIcon sx={{ height: '3rem', width: '3rem' }} />
-        </IconButton>
-      </RowSection>
+          <Button
+            aria-label="center"
+            onClick={onCenter}
+          >
+            <CenterFocusStrongIcon fontSize="large" />
+          </Button>
 
-      <RowSection>
-        <Counter />
-      </RowSection>
-
-      <RowSection>
-        <IconButton
-          aria-label="saved"
-          color="secondary"
-          onClick={handleOpenShapesModal}
-          sx={{ marginLeft: '20px' }}
-        >
-          <FolderSpecialIcon sx={{ height: '3rem', width: '3rem' }} />
-        </IconButton>
+          <Button
+            aria-label="saved"
+            onClick={handleOpenShapesModal}
+          >
+            <FolderIconOutlined fontSize="large" />
+          </Button>
+        </ButtonGroup>
       </RowSection>
     </ControlsContainer>
   );

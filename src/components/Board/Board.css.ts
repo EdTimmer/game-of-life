@@ -4,7 +4,6 @@ export const ViewportContainer = styled.div<{ $isPanning: boolean }>`
   width: 100%;
   height: 80vh;
   overflow: hidden;
-  margin: 0 1.4rem 1.4rem 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;

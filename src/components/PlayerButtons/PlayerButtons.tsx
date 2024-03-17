@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useStore } from '../../store';
@@ -14,9 +14,10 @@ import FastRewindIcon from '@mui/icons-material/FastRewind';
 interface PlayerButtonsProps {
   playSpeedRef: React.MutableRefObject<number>;
   isPanning: boolean;
+  isModalOpen: boolean;
 }
 
-const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
+const PlayerButtons = ({ playSpeedRef, isPanning, isModalOpen }: PlayerButtonsProps) => {
   const board = useStore(state => state.board);
   const cycleCount = useStore(state => state.cycleCount);
   const incrementCycleCount = useStore(state => state.incrementCycleCount);
@@ -37,6 +38,12 @@ const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
       setIsPlaying(false);
     }
   };
+  // stop play when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      stopPlay();
+    }
+  }, [isModalOpen]);
 
   const handleReturnToStart = () => {
     stopPlay();
@@ -85,14 +92,13 @@ const PlayerButtons = ({ playSpeedRef, isPanning }: PlayerButtonsProps) => {
 
   return (
     <ButtonGroup
-      variant="contained"
+      variant="outlined"
       size="large"
       color="secondary"
-      aria-label="Basic button group"
+      aria-label="player button group"
       disabled={isPanning}
     >
       <Button
-        variant="contained"
         size="large"
         aria-label="rewind"
         onClick={handleReturnToStart}
