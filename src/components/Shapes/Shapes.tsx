@@ -6,6 +6,7 @@ import { gliderDescription } from '../../shapesData/glider';
 import { whyNotDescription } from '../../shapesData/whyNot';
 import { pulsarPrecursorDescription } from '../../shapesData/pulsarPrecursor';
 import { lightweightSpaceshipDescription } from '../../shapesData/lightweightSpaceship';
+import { rPentomino, rPentominoDescription } from '../../shapesData/r_pentomino';
 
 interface ShapesProps {
   handleClose: () => void;
@@ -34,6 +35,13 @@ const Shapes = ({ handleClose }: ShapesProps) => {
         handleShapeSelection={handleShapeSelection}
         shape={ShapeEnum.LIGHTWEIGHT_SPACESHIP}
         label="lightweight spaceship"
+      />
+      <ShapeButton
+        imageFileName="r_pentomino.png"
+        shapeDescription={rPentominoDescription}
+        handleShapeSelection={handleShapeSelection}
+        shape={ShapeEnum.R_PENTOMINO}
+        label="r-pentomino"
       />
       <ShapeButton
         imageFileName="pulsar_precursor.png"

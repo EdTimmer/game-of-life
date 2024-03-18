@@ -3,6 +3,7 @@ import { glider } from '../shapesData/glider';
 import { pulsarPrecursor } from '../shapesData/pulsarPrecursor';
 import { whyNot } from '../shapesData/whyNot';
 import { lightweightSpaceship } from '../shapesData/lightweightSpaceship';
+import { rPentomino } from '../shapesData/r_pentomino';
 
 const defaultCell: CellType = {
   isAlive: false,
@@ -20,6 +21,11 @@ export const makeShape = (shape: ShapeEnum) => {
   switch (shape) {
     case ShapeEnum.GLIDER:
       glider.forEach(cell => {
+        newBoard[cell.rowIndex][cell.columnIndex].isAlive = true;
+      });
+      break;
+    case ShapeEnum.R_PENTOMINO:
+      rPentomino.forEach(cell => {
         newBoard[cell.rowIndex][cell.columnIndex].isAlive = true;
       });
       break;

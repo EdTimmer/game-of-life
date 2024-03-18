@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const ExplanationContainer = styled.div`
   width: 100%;
@@ -14,6 +15,8 @@ export const ExplanationHeader = styled.p`
   font-size: 1.8rem;
   font-weight: bold;
   letter-spacing: 1px;
+  color: ${colors.orangeWeb};
+  text-transform: uppercase;
 `;
 
 export const ExplanationSecion = styled.div`
