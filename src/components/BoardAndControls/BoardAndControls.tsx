@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { Canvas } from '@react-three/fiber';
 import { useStore } from '../../store';
 import Board from '../Board/Board';
 import Controls from '../Controls/Controls';
-import { BoardAndControlsContainer } from './BoardAndControls.css';
+import { BoardAndControlsContainer, CanvasContainer } from './BoardAndControls.css';
 
 const BoardAndControls = () => {
   const board = useStore(state => state.board);
@@ -45,7 +46,7 @@ const BoardAndControls = () => {
 
   return (
     <BoardAndControlsContainer>
-      <Board
+      {/* <Board
         board={board}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
@@ -53,7 +54,20 @@ const BoardAndControls = () => {
         translateX={translateX}
         translateY={translateY}
         isPanning={isPanning}
-      />
+      /> */}
+      <CanvasContainer>
+        <Canvas linear={false} camera={{ position: [0, 0, 100], fov: 75 }} style={{ backgroundColor: 'black', width: '100%', height: '80vh' }}>
+          <ambientLight intensity={0.5} />
+          <Board board={board} 
+            // onMouseDown={onMouseDown}
+            // onMouseMove={onMouseMove}
+            // onMouseUp={onMouseUp}
+            // translateX={translateX}
+            // translateY={translateY}
+            // isPanning={isPanning} 
+          />
+        </Canvas>
+      </CanvasContainer>
       <Controls
         isPanning={isPanning}
         setIsPanning={setIsPanning}

@@ -8,3 +8,9 @@ export const BoardAndControlsContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const CanvasContainer = styled.div`
+  width: 100%;
+  height: 80vh;
+  position: relative;
+`;
